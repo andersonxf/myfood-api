@@ -21,6 +21,7 @@ import com.andersonxf.myfood.domain.exception.EntidadeEmUsoException;
 import com.andersonxf.myfood.domain.exception.EntidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.model.Estado;
 import com.andersonxf.myfood.domain.repository.EstadoRepository;
+import com.andersonxf.myfood.domain.service.CadastroEstadoService;
 
 @RestController
 @RequestMapping("/estados")
