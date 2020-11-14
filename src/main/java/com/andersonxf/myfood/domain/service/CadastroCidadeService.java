@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import com.andersonxf.myfood.domain.exception.CidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.EntidadeEmUsoException;
 import com.andersonxf.myfood.domain.exception.EntidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.model.Cidade;
@@ -43,8 +44,7 @@ public class CadastroCidadeService {
 			cidadeRepository.deleteById(cidadeId);
 			
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(
-					String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
+			throw new CidadeNaoEncontradaException(cidadeId);
 			
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(
@@ -54,8 +54,7 @@ public class CadastroCidadeService {
 	
 	public Cidade buscarOuFalhar(Long cidadeId) {
 		return cidadeRepository.findById(cidadeId)
-			.orElseThrow(() -> new EntidadeNaoEncontradaException(
-					String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId)));
+			.orElseThrow(() -> new CidadeNaoEncontradaException(cidadeId));
 	}
 
 }

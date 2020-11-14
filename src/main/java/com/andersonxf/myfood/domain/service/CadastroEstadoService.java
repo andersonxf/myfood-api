@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.andersonxf.myfood.domain.exception.EntidadeEmUsoException;
 import com.andersonxf.myfood.domain.exception.EntidadeNaoEncontradaException;
+import com.andersonxf.myfood.domain.exception.EstadoNaoEncontradoException;
 import com.andersonxf.myfood.domain.model.Estado;
 import com.andersonxf.myfood.domain.repository.EstadoRepository;
 
@@ -31,8 +32,7 @@ public class CadastroEstadoService {
 			estadoRepository.deleteById(estadoId);
 			
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(
-				String.format(MSG_ESTADO_NAO_ENCONTRADO, estadoId));
+			throw new EstadoNaoEncontradoException(estadoId);
 		
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(
@@ -42,8 +42,7 @@ public class CadastroEstadoService {
 	
 	public Estado buscarOuFalhar(Long estadoId) {
 		return estadoRepository.findById(estadoId)
-			.orElseThrow(() -> new EntidadeNaoEncontradaException(
-					String.format(MSG_ESTADO_NAO_ENCONTRADO, estadoId)));
+			.orElseThrow(() -> new EstadoNaoEncontradoException(estadoId));
 	}
 	
 }
