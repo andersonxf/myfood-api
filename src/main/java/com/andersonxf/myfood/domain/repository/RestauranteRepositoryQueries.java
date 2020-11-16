@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.andersonxf.myfood.domain.model.Restaurante;
 
-
 public interface RestauranteRepositoryQueries {
 
 	List<Restaurante> find(String nome, 

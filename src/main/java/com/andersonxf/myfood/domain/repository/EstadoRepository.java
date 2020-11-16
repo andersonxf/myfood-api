@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.andersonxf.myfood.domain.model.Estado;
 
 @Repository
-public interface EstadoRepository extends JpaRepository<Estado, Long>{
+public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
 }

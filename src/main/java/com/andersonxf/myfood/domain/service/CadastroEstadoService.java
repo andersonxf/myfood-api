@@ -6,7 +6,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.andersonxf.myfood.domain.exception.EntidadeEmUsoException;
-import com.andersonxf.myfood.domain.exception.EntidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.EstadoNaoEncontradoException;
 import com.andersonxf.myfood.domain.model.Estado;
 import com.andersonxf.myfood.domain.repository.EstadoRepository;
@@ -15,10 +14,7 @@ import com.andersonxf.myfood.domain.repository.EstadoRepository;
 public class CadastroEstadoService {
 
 	private static final String MSG_ESTADO_EM_USO 
-	= "Estado de código %d não pode ser removido, pois está em uso";
-
-	private static final String MSG_ESTADO_NAO_ENCONTRADO 
-		= "Não existe um cadastro de estado com código %d";
+		= "Estado de código %d não pode ser removido, pois está em uso";
 	
 	@Autowired
 	private EstadoRepository estadoRepository;
@@ -39,7 +35,7 @@ public class CadastroEstadoService {
 				String.format(MSG_ESTADO_EM_USO, estadoId));
 		}
 	}
-	
+
 	public Estado buscarOuFalhar(Long estadoId) {
 		return estadoRepository.findById(estadoId)
 			.orElseThrow(() -> new EstadoNaoEncontradoException(estadoId));

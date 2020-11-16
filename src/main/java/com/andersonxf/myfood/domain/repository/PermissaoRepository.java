@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.andersonxf.myfood.domain.model.Permissao;
 
 @Repository
-public interface PermissaoRepository extends JpaRepository<Permissao, Long>{
-	
+public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
+
 }

@@ -10,7 +10,7 @@ import com.andersonxf.myfood.domain.repository.RestauranteRepository;
 
 @Service
 public class CadastroRestauranteService {
-	
+
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
@@ -22,18 +22,14 @@ public class CadastroRestauranteService {
 		
 		Cozinha cozinha = cadastroCozinha.buscarOuFalhar(cozinhaId);
 		
-//		Cozinha cozinha = cozinhaRepository.findById(cozinhaId)
-//			.orElseThrow(() -> new EntidadeNaoEncontradaException(
-//					String.format("Não existe cadastro de cozinha com código %d", cozinhaId)));
-		
 		restaurante.setCozinha(cozinha);
 		
 		return restauranteRepository.save(restaurante);
 	}
 	
 	public Restaurante buscarOuFalhar(Long restauranteId) {
-	    return restauranteRepository.findById(restauranteId)
-	        .orElseThrow(() -> new RestauranteNaoEncontradoException(restauranteId));
+		return restauranteRepository.findById(restauranteId)
+			.orElseThrow(() -> new RestauranteNaoEncontradoException(restauranteId));
 	}
 	
 }

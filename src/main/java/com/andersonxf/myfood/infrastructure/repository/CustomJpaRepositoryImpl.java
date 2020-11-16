@@ -7,8 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
-import com.andersonxf.myfood.domain.model.CustomJpaRepository;
-
+import com.andersonxf.myfood.domain.repository.CustomJpaRepository;
 
 public class CustomJpaRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID>
 	implements CustomJpaRepository<T, ID> {

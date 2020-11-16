@@ -20,22 +20,23 @@ public class Produto {
 
 	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@Column(nullable = false)
-    private String nome;
-
+	private String nome;
+	
 	@Column(nullable = false)
-    private String descricao;
-
+	private String descricao;
+	
 	@Column(nullable = false)
-    private BigDecimal preco;
-    
+	private BigDecimal preco;
+	
 	@Column(nullable = false)
-    private Boolean ativo;
+	private Boolean ativo;
 
 	@ManyToOne
-    @JoinColumn(nullable = false)
-    private Restaurante restaurante;        
+	@JoinColumn(nullable = false)
+	private Restaurante restaurante;
+
 }
