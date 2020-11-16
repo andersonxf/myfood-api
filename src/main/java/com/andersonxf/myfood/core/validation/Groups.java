@@ -1,4 +1,4 @@
-package com.andersonxf.myfood;
+package com.andersonxf.myfood.core.validation;
 
 public interface Groups {
 	public interface CozinhaId {}
