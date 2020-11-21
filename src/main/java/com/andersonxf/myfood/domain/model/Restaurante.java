@@ -29,6 +29,7 @@ import com.andersonxf.myfood.core.validation.Groups;
 import com.andersonxf.myfood.core.validation.Multiplo;
 import com.andersonxf.myfood.core.validation.ValorZeroIncluiDescricao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import lombok.Data;
@@ -55,6 +56,7 @@ public class Restaurante {
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 	
+	@JsonIgnoreProperties(value="nome", allowGetters = true)
 	@Valid
 	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
 	@NotNull

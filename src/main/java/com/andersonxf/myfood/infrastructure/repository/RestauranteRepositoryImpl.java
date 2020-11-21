@@ -58,7 +58,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 	}
 
 	@Override
-	public List<Restaurante> findComFreteGratis(String nome) {
+	public List<Restaurante> findComFreteGratis(String nome) {		
 		return restauranteRepository.findAll(comFreteGratis()
 				.and(comNomeSemelhante(nome)));
 	}
