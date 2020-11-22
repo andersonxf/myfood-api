@@ -13,7 +13,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.andersonxf.myfood.core.validation.Groups;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,7 +22,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Cozinha {
 
-	@NotNull(groups = Groups.CozinhaId.class)
+//	@NotNull(groups = Groups.CozinhaId.class)
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +32,6 @@ public class Cozinha {
 	@Column(nullable = false)
 	private String nome;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "cozinha")
 	private List<Restaurante> restaurantes = new ArrayList<>();
 	
