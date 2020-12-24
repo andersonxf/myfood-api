@@ -20,6 +20,7 @@ import com.andersonxf.myfood.api.assembler.RestauranteInputDisassembler;
 import com.andersonxf.myfood.api.assembler.RestauranteModelAssembler;
 import com.andersonxf.myfood.api.model.RestauranteModel;
 import com.andersonxf.myfood.api.model.input.RestauranteInput;
+import com.andersonxf.myfood.domain.exception.CidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.CozinhaNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.NegocioException;
 import com.andersonxf.myfood.domain.model.Restaurante;
@@ -61,7 +62,7 @@ public class RestauranteController {
 			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 			
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restaurante));
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 	}
@@ -78,7 +79,7 @@ public class RestauranteController {
 					"id", "formasPagamento", "endereco", "dataCadastro", "produtos");
 
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 	}
