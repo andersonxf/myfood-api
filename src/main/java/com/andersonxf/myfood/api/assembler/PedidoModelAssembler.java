@@ -8,22 +8,23 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.andersonxf.myfood.api.model.GrupoModel;
-import com.andersonxf.myfood.domain.model.Grupo;
+import com.andersonxf.myfood.api.model.PedidoModel;
+import com.andersonxf.myfood.domain.model.Pedido;
 
 @Component
-public class GrupoModelAssembler {
+public class PedidoModelAssembler {
 
     @Autowired
     private ModelMapper modelMapper;
     
-    public GrupoModel toModel(Grupo grupo) {
-        return modelMapper.map(grupo, GrupoModel.class);
+    public PedidoModel toModel(Pedido pedido) {
+        return modelMapper.map(pedido, PedidoModel.class);
     }
     
-    public List<GrupoModel> toCollectionModel(Collection<Grupo> grupos) {
-        return grupos.stream()
-                .map(grupo -> toModel(grupo))
+    public List<PedidoModel> toCollectionModel(Collection<Pedido> pedidos) {
+        return pedidos.stream()
+                .map(pedido -> toModel(pedido))
                 .collect(Collectors.toList());
     }
+    
 }
