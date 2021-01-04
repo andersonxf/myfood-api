@@ -20,6 +20,7 @@ import com.andersonxf.myfood.api.assembler.RestauranteInputDisassembler;
 import com.andersonxf.myfood.api.assembler.RestauranteModelAssembler;
 import com.andersonxf.myfood.api.model.RestauranteModel;
 import com.andersonxf.myfood.api.model.input.RestauranteInput;
+import com.andersonxf.myfood.api.model.view.RestauranteView;
 import com.andersonxf.myfood.domain.exception.CidadeNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.CozinhaNaoEncontradaException;
 import com.andersonxf.myfood.domain.exception.NegocioException;
@@ -27,6 +28,7 @@ import com.andersonxf.myfood.domain.exception.RestauranteNaoEncontradoException;
 import com.andersonxf.myfood.domain.model.Restaurante;
 import com.andersonxf.myfood.domain.repository.RestauranteRepository;
 import com.andersonxf.myfood.domain.service.CadastroRestauranteService;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping(value = "/restaurantes")
@@ -47,6 +49,12 @@ public class RestauranteController {
 	@GetMapping
 	public List<RestauranteModel> listar() {
 		return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
+	}
+	
+	@JsonView(RestauranteView.Resumo.class)
+	@GetMapping(params = "projecao=resumo")
+	public List<RestauranteModel> listaResumido() {
+		return listar();
 	}
 	
 	@GetMapping("/{restauranteId}")
